@@ -1,0 +1,13 @@
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: echo "Hello Azure DevOps!"
+  displayName: 'Test Azure Pipeline'
+
+- script: echo "My Azure DevOps account is working!"
+  displayName: 'Account activation test'
