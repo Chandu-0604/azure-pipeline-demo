@@ -6,8 +6,16 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: echo "Hello Azure DevOps!"
-  displayName: 'Test Azure Pipeline'
+- script: |
+    echo "Starting HTML project build..."
+    ls -la
+    test -f index.html
+    echo "index.html found successfully!"
+  displayName: 'Check HTML file'
 
-- script: echo "My Azure DevOps account is working!"
-  displayName: 'Account activation test'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.SourcesDirectory)'
+    ArtifactName: 'HTML-Website'
+    publishLocation: 'Container'
+  displayName: 'Publish HTML artifact'
